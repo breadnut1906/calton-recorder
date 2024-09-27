@@ -1,0 +1,37 @@
+<ion-content class="position-relative">
+  <div class="position-absolute start-50 top-50 translate-middle w-100">
+    <form class="row g-3 m-5" (ngSubmit)="onClickLogin()" [formGroup]="authForm">
+      <div class="col-12">
+        <ion-input 
+          fill="outline" 
+          type="text" 
+          label="Username" 
+          placeholder="Enter Username"
+          labelPlacement="stacked" 
+          formControlName="username" 
+          name="username"
+          errorText="Username is required"
+          required ></ion-input>
+      </div>
+      <div class="col-12">
+        <ion-input 
+          fill="outline" 
+          type="password" 
+          label="Password" 
+          placeholder="Enter Password"
+          labelPlacement="floating" 
+          formControlName="password" 
+          name="password"
+          errorText="Password is required"
+          required >
+          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+        </ion-input>
+      </div>
+      <div class="col-auto">
+        <ion-checkbox formControlName="remember" name="remember" labelPlacement="end">Remember Me</ion-checkbox>
+      </div>
+      <ion-button expand="full" type="submit" [disabled]="!authForm.valid">Login</ion-button>
+      <ion-button expand="full">Register</ion-button>
+    </form>
+  </div>
+</ion-content>

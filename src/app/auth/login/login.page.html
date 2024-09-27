@@ -30,7 +30,7 @@
       <div class="col-auto">
         <ion-checkbox formControlName="remember" name="remember" labelPlacement="end">Remember Me</ion-checkbox>
       </div>
-      <ion-button expand="full" type="submit" [disabled]="!authForm.valid">Login</ion-button>
+      <ion-button expand="full" (click)="onClickLogin()" [disabled]="authForm.invalid">Login</ion-button>
       <ion-button expand="full">Register</ion-button>
     </form>
   </div>

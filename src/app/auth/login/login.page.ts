@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
   }
 
   onClickLogin() {
-
+    console.log(this.authForm.value);
   }
 
   get username() {

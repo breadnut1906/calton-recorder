@@ -1,0 +1,10 @@
+<ion-router-outlet></ion-router-outlet>
+<ion-tabs>
+    <ion-tab-bar slot="bottom">
+        @for (item of tabs; track $index) {
+            <ion-tab-button [tab]="item.path">
+                <ion-icon [name]="item.icon"></ion-icon> {{ item.text }}
+            </ion-tab-button>
+        }
+    </ion-tab-bar>
+</ion-tabs>

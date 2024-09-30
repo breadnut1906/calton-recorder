@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Data Recorders</ion-title>
+  </ion-toolbar>
+  <ion-toolbar [formGroup]="filters">
+    <ion-segment formControlName="type">
+      <ion-segment-button value="People Counter">People</ion-segment-button>
+      <ion-segment-button value="Vehicle Counter">Vehicle</ion-segment-button>
+    </ion-segment>
+    <!-- <ion-searchbar formControlName="search"></ion-searchbar> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-refresher (refreshed)="onLoadDevices(true)"></app-refresher>
+
+  @if (!isLoading) {
+    <ion-list>
+      <ion-list-header>
+        <ion-label>{{ type?.value }}</ion-label>
+      </ion-list-header>
+      @for (item of devices; track $index) {
+        <ion-item [id]="item.id" [button]="true" [detail]="true">
+            <ion-icon slot="start" name="videocam-outline"></ion-icon>
+          <ion-label>
+            <h4 class="fs-6">{{ item.name }}</h4>
+            <p>{{ item.serialNo }}</p>
+            @if (item.registeredDate) {
+              <ion-note [color]="(item.lastUpdateDate | deviceStatus) == 'Online' ? 'success' : 'danger'">Status: {{ item.lastUpdateDate | deviceStatus }}</ion-note>
+            } @else {
+              <ion-note color="warning">Status: Newly Installed</ion-note>
+            }
+          </ion-label>
+
+          <ion-modal [trigger]="item.id">
+            <ng-template>
+              <app-device-details [device]="item"></app-device-details>
+            </ng-template>
+          </ion-modal>
+        </ion-item>
+      }
+    </ion-list>
+  } @else {
+    <app-skeleton-loading></app-skeleton-loading>
+  }
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="scan-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <app-infinite-scroll
+    [emptyResult]="emptyResult"
+    (loadMore)="onLoadDevices()"
+  ></app-infinite-scroll>
+</ion-content>

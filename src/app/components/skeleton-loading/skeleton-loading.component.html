@@ -1,0 +1,11 @@
+<ion-list>
+  @for (item of [ 0, 1, 2, 3, 4, 5, 6 ]; track $index) {
+    <ion-item>
+      <ion-label>
+        <h3><ion-skeleton-text class="skeleton-width-80" [animated]="true"></ion-skeleton-text></h3>
+        <p><ion-skeleton-text class="skeleton-width-60" [animated]="true"></ion-skeleton-text></p>
+        <p><ion-skeleton-text class="skeleton-width-30" [animated]="true"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+  }
+</ion-list>

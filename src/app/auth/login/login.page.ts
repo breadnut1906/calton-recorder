@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IonicUiModule } from 'src/app/modules/ionic-ui/ionic-ui.module';
-import { IonItem, IonInput } from "@ionic/angular/standalone";
 import { IonicIconsService } from 'src/app/services/ionic-icons.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,13 +21,14 @@ export class LoginPage implements OnInit {
     remember: new FormControl(false, { nonNullable: true })
   })
 
-  constructor(private icons: IonicIconsService) { }
+  constructor(private icons: IonicIconsService, private authService: AuthService, private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onClickLogin() {
-    console.log(this.authForm.value);
+    this.authService.onLogin(this.authForm.value).subscribe({ next: () => {
+      this.router.navigateByUrl('/dashboard')
+    }})
   }
 
   get username() {

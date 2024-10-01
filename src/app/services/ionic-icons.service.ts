@@ -1,6 +1,19 @@
 import { Injectable } from '@angular/core';
 import { addIcons } from 'ionicons';
-import { closeOutline, eye, eyeOff, funnelOutline, homeOutline, personCircleOutline, qrCodeOutline, scanOutline, settingsOutline, videocamOutline } from 'ionicons/icons';
+import { 
+  arrowBackOutline, 
+  closeOutline, 
+  eye, 
+  eyeOff, 
+  funnelOutline, 
+  homeOutline, 
+  locationOutline, 
+  personCircleOutline, 
+  qrCodeOutline, 
+  scanOutline, 
+  settingsOutline,
+  videocamOutline 
+} from 'ionicons/icons';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +31,9 @@ export class IonicIconsService {
       'settings-outline': settingsOutline,
       'scan-outline': scanOutline,
       'funnel-outline': funnelOutline,
-      'close-outline': closeOutline
+      'close-outline': closeOutline,
+      'arrow-back-outline': arrowBackOutline,
+      'location-outline': locationOutline
     })
   }
 }

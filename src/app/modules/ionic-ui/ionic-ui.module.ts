@@ -41,6 +41,14 @@ import {
   IonSegment,
   IonSegmentButton,
   IonModal,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from '@ionic/angular/standalone';
 
 @NgModule({
@@ -88,6 +96,14 @@ import {
     IonSegment,
     IonSegmentButton,
     IonModal,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardSubtitle,
+    IonCardTitle,
+    IonGrid,
+    IonRow,
+    IonCol,
   ],
   exports: [
     CommonModule, 
@@ -132,6 +148,14 @@ import {
     IonSegment,
     IonSegmentButton,
     IonModal,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardSubtitle,
+    IonCardTitle,
+    IonGrid,
+    IonRow,
+    IonCol,
   ]
 })
 export class IonicUiModule { }

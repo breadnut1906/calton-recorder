@@ -8,6 +8,10 @@ import { AppComponent } from './app/app.component';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { provideHttpClient } from '@angular/common/http';
 
+import { register as registerSwiperElements } from 'swiper/element/bundle';
+
+registerSwiperElements();
+
 defineCustomElements(window)
 
 bootstrapApplication(AppComponent, {
@@ -15,6 +19,6 @@ bootstrapApplication(AppComponent, {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
-    provideHttpClient()
+    provideHttpClient(),
   ],
 });

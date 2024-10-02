@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Face Detection</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Face Detection</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <video #video autoplay playsinline style="display: none;"></video>
+  <canvas #canvas width="640" height="480"></canvas>
+</ion-content>

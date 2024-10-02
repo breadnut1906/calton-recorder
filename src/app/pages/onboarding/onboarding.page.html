@@ -1,0 +1,21 @@
+<ion-content class="position-relative" [fullscreen]="true">
+  <div class="d-flex flex-column justify-content-center h-100">
+    <swiper-container #swiper class="h-100 w-100" [slides-per-view]="1" pagination>
+      @for (item of slides; track $index) {
+        <swiper-slide class="position-relative">
+          <div class="position-absolute start-50 top-50 translate-middle text-center w-100">
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.description }}</p>
+          </div>
+        </swiper-slide>
+      }
+    </swiper-container>
+    <ion-grid class="w-100">
+      <ion-row>
+        <ion-col size="12">
+          <ion-button (click)="onClickStartApp()" expand="block">Get Started</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

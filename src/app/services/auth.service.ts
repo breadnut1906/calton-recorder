@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, of, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StorageService } from './storage.service';
 
@@ -33,6 +33,11 @@ export class AuthService {
           this.isAuthenticated.next(true);
         }
         return response
+      }),
+      catchError((error: HttpErrorResponse) => {
+        // Handle the error and re-throw it so that the subscriber can handle it
+        const errorMessage = this.getErrorMessage(error);
+        return throwError(() => new Error(errorMessage));
       })
     )
   }
@@ -59,5 +64,15 @@ export class AuthService {
       }),
       catchError(() => of(false))
     )
+  }
+
+  private getErrorMessage(error: HttpErrorResponse): string {
+    if (error.error instanceof ErrorEvent) {
+      // Client-side error
+      return `Client-side error: ${error.error.message}`;
+    } else {
+      // Server-side error
+      return `Server error: ${error.status} ${error.message}`;
+    }
   }
 }

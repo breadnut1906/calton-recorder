@@ -49,6 +49,7 @@ import {
   IonGrid,
   IonRow,
   IonCol,
+  IonAlert,
 } from '@ionic/angular/standalone';
 
 @NgModule({
@@ -104,6 +105,7 @@ import {
     IonGrid,
     IonRow,
     IonCol,
+    IonAlert,
   ],
   exports: [
     CommonModule, 
@@ -156,6 +158,7 @@ import {
     IonGrid,
     IonRow,
     IonCol,
+    IonAlert,
   ]
 })
 export class IonicUiModule { }

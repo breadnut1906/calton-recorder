@@ -4,6 +4,7 @@ import { IonicUiModule } from 'src/app/modules/ionic-ui/ionic-ui.module';
 import { IonicIconsService } from 'src/app/services/ionic-icons.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,9 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
+  errorMsg: any;
+  alertButtons = ['Close'];
+  isAlert: boolean = false;
   showPass: boolean = false;
   authForm: FormGroup = new FormGroup({
     username: new FormControl('', [ Validators.required ]),
@@ -21,13 +25,27 @@ export class LoginPage implements OnInit {
     remember: new FormControl(false, { nonNullable: true })
   })
 
-  constructor(private icons: IonicIconsService, private authService: AuthService, private router: Router) { }
+  constructor(
+    private icons: IonicIconsService, 
+    private authService: AuthService, 
+    private router: Router,
+    private storage: StorageService
+  ) { }
 
   ngOnInit() { }
 
   onClickLogin() {
+    const onBoard = JSON.parse(this.storage.getToken('onboarding'));    
     this.authService.onLogin(this.authForm.value).subscribe({ next: () => {
-      this.router.navigateByUrl('/dashboard')
+      if (!onBoard) {
+        this.router.navigateByUrl('/onboarding');
+      } else {
+        this.router.navigateByUrl('/dashboard');
+      }
+    }, error: (err: any) => {
+      console.log(err);
+      this.errorMsg = `${err.toString()}, URL: ${window.location.href}`;
+      this.isAlert = true;
     }})
   }
 

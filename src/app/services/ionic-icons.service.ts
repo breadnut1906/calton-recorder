@@ -6,6 +6,7 @@ import {
   eye, 
   eyeOff, 
   funnelOutline, 
+  happyOutline, 
   homeOutline, 
   locationOutline, 
   personCircleOutline, 
@@ -33,7 +34,8 @@ export class IonicIconsService {
       'funnel-outline': funnelOutline,
       'close-outline': closeOutline,
       'arrow-back-outline': arrowBackOutline,
-      'location-outline': locationOutline
+      'location-outline': locationOutline,
+      'happy-outline': happyOutline,
     })
   }
 }

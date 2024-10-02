@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { RouterModule } from '@angular/router';
+import { IonicUiModule } from 'src/app/modules/ionic-ui/ionic-ui.module';
+import { AuthService } from 'src/app/services/auth.service';
+import { IonicIconsService } from 'src/app/services/ionic-icons.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [ IonicUiModule, RouterModule ]
 })
 export class DashboardPage implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService, private icon: IonicIconsService) { }
 
   ngOnInit() {
+  }
+
+  onLogOut() {
+    this.auth.onLogOut();
   }
 
 }

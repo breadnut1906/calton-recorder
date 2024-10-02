@@ -20,6 +20,7 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "useDefineForClassFields": false,
+    "skipLibCheck": true, // This can help skip type checks for libraries
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

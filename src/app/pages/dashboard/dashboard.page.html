@@ -11,4 +11,15 @@
       <ion-title size="large">Dashboard</ion-title>
     </ion-toolbar>
   </ion-header>
+  
+  <ion-grid class="h-100">
+    <ion-row class="h-100">
+      <ion-col size="12" sizeMd="6">
+        <ion-button [routerLink]="['/face-detection']" color="secondary" class="h-100" size="large" expand="block">Face Detection</ion-button>
+      </ion-col>
+      <ion-col size="12" sizeMd="6">
+        <ion-button (click)="onLogOut()" color="secondary" class="h-100" size="large" expand="block">Logout</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

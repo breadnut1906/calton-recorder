@@ -34,4 +34,12 @@
       <ion-button expand="full">Register</ion-button>
     </form>
   </div>
+
+  <ion-alert
+    [isOpen]="isAlert"
+    header="Error"
+    [message]="errorMsg"
+    [buttons]="alertButtons"
+    (didDismiss)="isAlert = !isAlert"
+  ></ion-alert>
 </ion-content>

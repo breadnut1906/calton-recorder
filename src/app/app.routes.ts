@@ -12,6 +12,10 @@ export const routes: Routes = [
     loadComponent: () => import('./auth/login/login.page').then( m => m.LoginPage)
   },
   {
+    path: 'onboarding',
+    loadComponent: () => import('./pages/onboarding/onboarding.page').then( m => m.OnboardingPage)
+  },
+  {
     path: '',
     loadComponent: () => import('./layout/layout.component').then(m => m.LayoutComponent),
     canActivate: [ authGuard ],
@@ -25,9 +29,15 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/devices/devices.page').then( m => m.DevicesPage)
       },
       {
+        path: 'face-detection',
+        loadComponent: () => import('./pages/face-detection/face-detection.page').then( m => m.FaceDetectionPage)
+      },
+      {
         path: '**',
         loadComponent: () => import('./pages/page-not-found/page-not-found.page').then( m => m.PageNotFoundPage)
       },
     ]
   },
+
+
 ];

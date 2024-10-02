@@ -24,7 +24,7 @@ export class DeviceDetailsComponent  implements OnInit, OnDestroy, AfterViewInit
   mapIcon = new L.Icon({
     iconUrl: "assets/leaflet/marker-icon.png",
     shadowUrl: 'assets/leaflet/marker-shadow.png',
-    iconSize: [24, 24],
+    iconSize: [26, 34], //w , h
     shadowSize: [45, 45]
   });
   mapOptions: any = {

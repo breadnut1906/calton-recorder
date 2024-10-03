@@ -32,8 +32,20 @@
       } 
   
       @if (showVideo) {
-        <ion-toggle [checked]="true" [(ngModel)]="isDetecting" (ngModelChange)="toggleDetection()">Toggle Detection</ion-toggle>
-        <ion-button expand="block" color="secondary" (click)="stopCamera()">Stop Camera</ion-button>
+        <div class="p-3">
+          <ion-toggle [checked]="true" [(ngModel)]="isDetecting" (ngModelChange)="toggleDetection()">Toggle Detection</ion-toggle>
+          <ion-toggle [checked]="true" [(ngModel)]="isCaptureImages">Toggle Capture</ion-toggle>
+          <ion-button expand="block" color="secondary" (click)="stopCamera()">Stop Camera</ion-button>
+        </div>
+
+        <ion-list>
+          <ion-item [button]="true">
+            <ion-avatar aria-hidden="true" slot="start">
+              <img alt="" [src]="faces?.image" />
+            </ion-avatar>
+            <ion-label>{{ faces?.predictedFaces | json }}</ion-label>
+          </ion-item>
+        </ion-list>
       }
     </div>
   </div>

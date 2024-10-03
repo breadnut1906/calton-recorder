@@ -52,6 +52,7 @@ import {
   IonAlert,
   IonLoading,
   IonToggle,
+  IonAvatar,
 } from '@ionic/angular/standalone';
 
 @NgModule({
@@ -110,6 +111,7 @@ import {
     IonAlert,
     IonLoading,
     IonToggle,
+    IonAvatar,
   ],
   exports: [
     CommonModule, 
@@ -165,6 +167,7 @@ import {
     IonAlert,
     IonLoading,
     IonToggle,
+    IonAvatar,
   ]
 })
 export class IonicUiModule { }

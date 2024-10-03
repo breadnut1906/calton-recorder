@@ -130,6 +130,9 @@ export class FaceDetectionPage implements OnInit {
 
   errorMessage: string | null = null;
 
+  faces: any;
+  isCaptureImages: boolean = false;
+
   constructor() { }
 
   async ngOnInit() {
@@ -181,7 +184,7 @@ export class FaceDetectionPage implements OnInit {
     this.detector = await faceDetection.createDetector(
       this.model,
       this.modelConfig
-    );
+    );    
   }
 
   toggleDetection() {
@@ -217,7 +220,7 @@ export class FaceDetectionPage implements OnInit {
 
     const predictedFaces = await this.detector.estimateFaces(this.videoRef, {
       flipHorizontal: true,
-    });
+    });    
 
     // Draw bounding boxes and keypoints
     //https://github.com/tensorflow/tfjs-models/tree/master/face-detection
@@ -245,6 +248,14 @@ export class FaceDetectionPage implements OnInit {
         });
       }
     );
+
+    if (this.isCaptureImages) {
+      const imageDataURL = this.canvas.toDataURL('image/png');
+      this.faces = {
+        predictedFaces,
+        image: imageDataURL
+      }
+    }
   }
 
   stopCamera() {

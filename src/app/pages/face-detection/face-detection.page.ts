@@ -246,16 +246,42 @@ export class FaceDetectionPage implements OnInit {
         pred.keypoints.forEach((keypoint) => {
           this.ctx.fillRect(keypoint.x, keypoint.y, 5, 5);
         });
+
+        if (this.isCaptureImages) {
+          this.captureFaceImage(pred.box)
+        }
       }
     );
+  }
 
-    if (this.isCaptureImages) {
-      const imageDataURL = this.canvas.toDataURL('image/png');
-      this.faces = {
-        predictedFaces,
-        image: imageDataURL
-      }
-    }
+
+  captureFaceImage(box: any) {
+    // Create a new canvas to store the face image
+    const faceCanvas = document.createElement('canvas');
+    const faceCtx: any = faceCanvas.getContext('2d');
+
+    // Set the canvas size to the size of the detected face box
+    faceCanvas.width = box.width;
+    faceCanvas.height = box.height;
+
+    // Extract the face image from the original canvas
+    faceCtx.drawImage(
+      this.canvas,
+      box.xMin,
+      box.yMin,
+      box.width,
+      box.height,
+      0,
+      0,
+      box.width,
+      box.height
+    );
+
+    // Get the data URL of the captured face image
+    const faceImageDataURL = faceCanvas.toDataURL('image/png');
+
+    // Optionally store the face image data
+    this.faces = { box, image: faceImageDataURL }
   }
 
   stopCamera() {

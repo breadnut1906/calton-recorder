@@ -1,6 +1,46 @@
-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
+
+// .video-container {
+//     position: relative; /* Make the container relative for absolute positioning of the overlay */
+//   }
+
+// .video {
+//     width: 200px;      /* Set the overlay width same as video */
+//     height: 200px;     /* Set the overlay height same as video */
+//     border: 2px solid #4CAF50;
+//     border-radius: 10px;
+// }
+
+// .overlay {
+//     position: absolute; /* Position the overlay over the video */
+//     top: 0;             /* Align to the top */
+//     left: 0;            /* Align to the left */
+//     width: 200px;      /* Set the overlay width same as video */
+//     height: 200px;     /* Set the overlay height same as video */
+//     pointer-events: none; /* Allow clicks to pass through the canvas */
+//     border: 2px solid #4CAF50;
+//     border-radius: 10px;
+// }
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+  
+.feed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+  
+#video,
+#canvas {
+    width: 75vw;
+    max-width: 1300px;
+    max-height: 65vh;
+    border-radius: 20px;
+    object-fit: cover;
 }

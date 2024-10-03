@@ -50,6 +50,8 @@ import {
   IonRow,
   IonCol,
   IonAlert,
+  IonLoading,
+  IonToggle,
 } from '@ionic/angular/standalone';
 
 @NgModule({
@@ -106,6 +108,8 @@ import {
     IonRow,
     IonCol,
     IonAlert,
+    IonLoading,
+    IonToggle,
   ],
   exports: [
     CommonModule, 
@@ -159,6 +163,8 @@ import {
     IonRow,
     IonCol,
     IonAlert,
+    IonLoading,
+    IonToggle,
   ]
 })
 export class IonicUiModule { }

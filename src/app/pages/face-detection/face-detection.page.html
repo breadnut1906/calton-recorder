@@ -11,7 +11,30 @@
     </ion-toolbar>
   </ion-header>
 
-
-  <video #video autoplay playsinline style="display: none;"></video>
-  <canvas #canvas width="640" height="480"></canvas>
+  <div class="container">
+    <div class="d-flex- flex-column">
+      @if (isLoading) {
+        <ion-loading message="Loading. . ." duration="2000"></ion-loading>
+      }
+  
+      @if (errorMessage) {
+        <ion-alert header="Error" [message]="errorMessage" [buttons]="['Close']"></ion-alert>
+      }
+  
+      <div class="p-2">
+        <video #videoElement id="video" autoplay playsinline [style.display]="isDetecting ? 'none' : 'block'"></video>
+      </div>
+  
+      <canvas #canvasElement id="canvas"  [style.display]="isDetecting ? 'block' : 'none'" [width]="videoElement.videoWidth" [height]="videoElement.videoHeight"></canvas>
+  
+      @if (!isLoading && !showVideo) {
+        <ion-button expand="block" color="secondary" (click)="startCamera()">Start Camera</ion-button>
+      } 
+  
+      @if (showVideo) {
+        <ion-toggle [checked]="true" [(ngModel)]="isDetecting" (ngModelChange)="toggleDetection()">Toggle Detection</ion-toggle>
+        <ion-button expand="block" color="secondary" (click)="stopCamera()">Stop Camera</ion-button>
+      }
+    </div>
+  </div>
 </ion-content>
